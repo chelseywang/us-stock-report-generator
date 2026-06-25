@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- 2. 深度 CSS 客製化 ---
+# --- 2. 深度 CSS 客製化 (美式經典紅藍風格) ---
 st.markdown("""
     <style>
     /* 全站基礎設定 */
@@ -20,8 +20,9 @@ st.markdown("""
         font-family: 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
     }
     
+    /* 這裡保持淺色背景，讓白底卡片和紅色元素更凸顯 */
     .stApp {
-        background-color: #f1f5f9;
+        background-color: #f4f6f9;
     }
     
     .block-container {
@@ -32,9 +33,9 @@ st.markdown("""
         max-width: 100%;
     }
 
-    /* Header */
+    /* Header - 美國國旗紅 (Old Glory Red) */
     .header-container {
-        background-color: #1e3a8a;
+        background-color: #B31942; 
         padding: 1.8rem 4rem;
         margin-left: -3rem;
         margin-right: -3rem;
@@ -44,6 +45,7 @@ st.markdown("""
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border-bottom: 4px solid #0A3161; /* 底部加一條海軍藍的線條點綴 */
     }
     
     /* 卡片樣式 */
@@ -56,18 +58,19 @@ st.markdown("""
         margin-bottom: 1.5rem;
     }
     
-    /* 步驟標題 */
+    /* 步驟標題 - 海軍藍 */
     .step-header {
         display: flex;
         align-items: center;
         margin-bottom: 1.5rem;
         font-size: 1.15rem;
         font-weight: 700;
-        color: #1e3a8a;
+        color: #0A3161;
     }
     
+    /* 步驟數字圓圈 - 美國紅 */
     .step-number {
-        background-color: #2563eb;
+        background-color: #B31942;
         color: white;
         width: 32px;
         height: 32px;
@@ -93,20 +96,21 @@ st.markdown("""
         position: relative;
     }
     
+    /* 上傳區圖示改為紅色 (#B31942) */
     div[data-testid="stFileUploader"] section::before {
         content: '';
         display: block;
         width: 64px;
         height: 64px;
         margin: 0 auto 15px auto;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>');
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23B31942" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>');
         background-repeat: no-repeat;
         background-position: center;
     }
 
     div[data-testid="stFileUploader"] section:hover {
-        border-color: #2563eb;
-        background-color: #f8fafc;
+        border-color: #B31942;
+        background-color: #fdf6f6;
     }
     
     div[data-testid="stFileUploader"] small {
@@ -144,28 +148,28 @@ st.markdown("""
     }
     
     div.stButton > button[kind="secondary"] {
-        background-color: #334155;
+        background-color: #0A3161; /* 海軍藍次要按鈕 */
         color: white;
     }
     div.stButton > button[kind="secondary"]:hover {
-        background-color: #1e293b;
+        background-color: #061e3d;
     }
     
     div.stButton > button[kind="primary"] {
-        background-color: #2563eb;
+        background-color: #B31942; /* 美國紅主要按鈕 */
         color: white;
-        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 6px -1px rgba(179, 25, 66, 0.3);
     }
     div.stButton > button[kind="primary"]:hover {
-        background-color: #1d4ed8;
+        background-color: #8C1333;
         transform: translateY(-2px);
-        box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 6px 8px -1px rgba(179, 25, 66, 0.4);
     }
     
-    /* ✨ V 7.5 修正：為了在白色的卡片上能看見框框，我們必須用「顏色」把它框出來 */
+    /* ✨ 程式碼/文字輸出區塊 (紅框版) */
     div[data-testid="stCodeBlock"] {
-        background-color: #f8fafc !important; 
-        border: 2px solid #1e3a8a !important; 
+        background-color: #fdf6f6 !important; /* 極淡的紅色底 */
+        border: 2px solid #B31942 !important; /* 美國紅邊框 */
         border-radius: 8px !important;
         padding: 10px !important;
         margin-top: 5px !important;
@@ -176,16 +180,16 @@ st.markdown("""
     }
 
     div[data-testid="stCodeBlock"] code {
-        color: #0f172a !important; /* 深色文字 */
+        color: #0f172a !important; 
         background-color: transparent !important;
         font-family: 'Microsoft JhengHei', 'Noto Sans TC', sans-serif !important;
         font-size: 16px !important;
         font-weight: 700 !important;
     }
 
-    /* 確保複製按鈕是深色的 */
+    /* 確保複製按鈕是紅色的 */
     div[data-testid="stCodeBlock"] button {
-        color: #1e3a8a !important;
+        color: #B31942 !important;
     }
     
     #MainMenu {visibility: hidden;}
@@ -195,7 +199,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. 頂部藍色 Header ---
+# --- 3. 頂部紅色 Header ---
 st.markdown("""
     <div class="header-container">
         <div style="display:flex; align-items:center;">
@@ -204,11 +208,11 @@ st.markdown("""
             </div>
             <div>
                 <h1 style="margin:0; font-size:1.6rem; font-weight:700; letter-spacing:0.5px;">美股外電報告產生器</h1>
-                <p style="margin:4px 0 0 0; color:#cbd5e1; font-size:0.9rem;">元大證券國際金融部專用格式</p>
+                <p style="margin:4px 0 0 0; color:#e2e8f0; font-size:0.9rem;">元大證券國際金融部專用格式</p>
             </div>
         </div>
         <div style="background-color:rgba(255,255,255,0.15); padding:6px 16px; border-radius:20px; font-size:0.85rem; font-weight:500;">
-            V 8.0 (美股專用版)
+            V 8.1 (美式紅藍配色)
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -235,7 +239,7 @@ if "GOOGLE_API_KEY" in st.secrets:
     except Exception as e:
         pass 
 
-# --- 預設 Prompt 模板 (針對美股調整，包含 ETF 的 AUM 優先邏輯) ---
+# --- 預設 Prompt 模板 ---
 DEFAULT_PROMPT_TEMPLATE = """請你扮演「元大證券國際金融部研究員」，根據我上傳的 PDF 券商報告（內容附在最後），整理成「美股外電格式」。
 若報告涉及 ETF，請優先抓取「AUM (資產管理規模)」數據，而非 Market Cap。
 請完整依照以下規範輸出，排版格式與空行必須嚴格遵守：
@@ -304,7 +308,7 @@ with col_left:
         if uploaded_files:
             st.success(f"✅ 已成功讀取 {len(uploaded_files)} 份檔案")
 
-    # === 卡片 2: 設定 (含標題複製功能) ===
+    # === 卡片 2: 設定 ===
     with st.container(border=True):
         st.markdown("""
             <div class="step-header">
@@ -313,10 +317,8 @@ with col_left:
             </div>
         """, unsafe_allow_html=True)
         
-        # 1. 日期選擇器
         report_date = st.date_input("報告日期", datetime.date.today())
         
-        # --- 標題複製區 (修正為 YYYY/MM/DD) ---
         st.write("")
         st.markdown("**👇 信件標題 (點擊右上角圖示即可複製)**")
         
@@ -338,9 +340,9 @@ with col_left:
         if api_key:
             st.caption(f"✓ API 連線正常，共偵測到 {len(available_models)} 個模型")
         else:
-            st.error("⚠️ 未偵測到 Secrets API Key，請檢查 `.streamlit/secrets.toml` 設定。")
+            st.error("⚠️ 未偵測到 Secrets API Key，請檢查 GitHub Secrets 設定。")
 
-    # === 卡片 3 (自定義 Prompt) ===
+    # === 卡片 3 ===
     with st.container(border=True):
         with st.expander("✏️ 自定義 Prompt 指令 (進階設定)", expanded=False):
             st.caption("您可以在此修改 AI 的指令模板。`{date}` 會自動替換為上方選擇的日期。")
@@ -373,9 +375,7 @@ if uploaded_files:
         except Exception as e:
             st.error(f"檔案 {pdf_file.name} 解析失敗: {e}")
 
-    # 使用 YYYY/MM/DD 格式寫入 Prompt
     date_str = report_date.strftime("%Y/%m/%d")
-    
     instruction_part = user_custom_prompt.replace("{date}", date_str)
     
     final_prompt = f"""{instruction_part}
@@ -406,7 +406,7 @@ with col_right:
                 result_text = response.text
                 
                 status_box.empty()
-                st.success("✅ 報告生成完成！請點擊下方藍色框框右上角的 📄 圖示進行複製")
+                st.success("✅ 報告生成完成！請點擊下方紅框框右上角的 📄 圖示進行複製")
                 
                 st.code(result_text, language="text")
                 
