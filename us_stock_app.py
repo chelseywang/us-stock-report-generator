@@ -324,7 +324,7 @@ with col_left:
         
         # 格式化日期：YYYY/MM/DD
         formatted_date = report_date.strftime("%Y/%m/%d")
-        title_text = f"早安！{formatted_date} 美股外電整理 元大證券國金部"
+        title_text = f"午安！{formatted_date} 美股外電整理 元大證券國金部"
         
         st.code(title_text, language="text")
         
